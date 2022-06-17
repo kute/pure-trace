@@ -1,0 +1,25 @@
+1、byte buddy
+https://bytebuddy.net/#/
+https://github.com/raphw/byte-buddy
+中文资料：https://notes.diguage.com/byte-buddy-tutorial/#preliminary
+
+
+1、动态创建已知类的子类，并重写父类的方法，将逻辑代理到指定的类
+2、重新定义已存在的类以及类中的方法，即增强已知类
+   增强已知类有两种方式：
+       type redefinition（类型重定义）：当重定义一个类时，Byte Buddy 可以对一个已有的类添加属性和方法，或者删除已经存在的方法实现。如果使用其他的方法实现替换已经存在的方法实现，则原来存在的方法实现就会消失
+       type rebasing（类型重定基底）：原有的方法不会丢失，但是会被重命名，添加 $original 后缀
+3、方法委托时可以在委托类上用到的注解
+@Argument	绑定单个参数
+@AllArguments	绑定所有参数的数组
+@This	当前被拦截的、动态生成的那个对象
+@Super	当前被拦截的、动态生成的那个对象的父类对象
+@Origin	可以绑定到以下类型的参数：Method 被调用的原始方法 Constructor 被调用的原始构造器 Class 当前动态创建的类 MethodHandle MethodType String 动态类的toString()的返回值 int 动态方法的修饰符
+@DefaultCall	调用默认方法而非super的方法
+@SuperCall	用于调用父类版本的方法，对原方法的封装
+@Super	注入父类型对象，可以是接口，从而调用它的任何方法
+@RuntimeType	可以用在返回值、参数上，提示ByteBuddy禁用严格的类型检查
+@Empty	注入参数的类型的默认值
+@StubValue	注入一个存根值。对于返回引用、void的方法，注入null；对于返回原始类型的方法，注入0
+@FieldValue	注入被拦截对象的一个字段的值
+@Morph	类似于@SuperCall，但是允许指定调用参数

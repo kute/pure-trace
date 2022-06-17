@@ -1,0 +1,12 @@
+1、教程
+https://github.com/apache/skywalking
+https://skywalking.apache.org/zh/page/4/
+https://juejin.cn/post/7072709231949905957
+https://www.iocoder.cn/SkyWalking/
+https://skywalking.apache.org/zh/2018-12-21-skywalking-source-code-read/
+2、探针配置
+
+-javaagent:/Users/kute/app/apache-skywalking-apm-bin-es7/agent/skywalking-agent.jar
+-Dskywalking_config=/Users/kute/app/apache-skywalking-apm-bin-es7/agent/config/agent.config
+-Dskywalking.collector.backend_service=Skywalking OAP服务地址
+-Dskywalking.agent.service_name=当前服务在Skywalking中注册的服务名字
