@@ -73,6 +73,12 @@
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
 
+        <dependency>
+            <groupId>com.kute</groupId>
+            <artifactId>async-init-bean</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
