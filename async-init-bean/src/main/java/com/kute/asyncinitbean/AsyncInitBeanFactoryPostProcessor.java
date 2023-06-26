@@ -46,11 +46,7 @@ import java.util.stream.Collectors;
  * 扫描所有 带@AsyncInitBean注解的 bean，解析所有 bean 的 init 方法
  */
 @Slf4j
-public class AsyncInitBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
-        EnvironmentAware {
-
-    //    private final PlaceHolderBinder binder = new DefaultPlaceHolderBinder();
-    private Environment environment;
+public class AsyncInitBeanFactoryPostProcessor implements BeanFactoryPostProcessor{
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -169,10 +165,6 @@ public class AsyncInitBeanFactoryPostProcessor implements BeanFactoryPostProcess
         if (AsyncInitBeanAnnotation == null) {
             return;
         }
-        // 这里通过创建代理，实现注解中的方法能够解析占位符，默认解析是 environment
-//        PlaceHolderAnnotationInvocationHandler.AnnotationWrapperBuilder<AsyncInitBean> wrapperBuilder = PlaceHolderAnnotationInvocationHandler.AnnotationWrapperBuilder
-//                .wrap(AsyncInitBeanAnnotation).withBinder(binder);
-//        AsyncInitBeanAnnotation = wrapperBuilder.build();
 
         if (AsyncInitBeanAnnotation.value()) {
             log.info("registerAsyncInitBean 1 for bean={} ,method={}", beanId, beanDefinition.getInitMethodName());
@@ -181,17 +173,5 @@ public class AsyncInitBeanFactoryPostProcessor implements BeanFactoryPostProcess
         }
 
     }
-
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
-//    class DefaultPlaceHolderBinder implements PlaceHolderBinder {
-//        @Override
-//        public String bind(String text) {
-//            return environment.resolvePlaceholders(text);
-//        }
-//    }
 
 }
