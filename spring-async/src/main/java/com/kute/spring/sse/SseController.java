@@ -24,6 +24,12 @@ public class SseController {
     @Resource
     private SseService sseService;
 
+    /**
+     * SseEmitter 底层使用了 DeferredResult
+     *
+     * @param clientId
+     * @return
+     */
     @GetMapping(value = "/test/{clientId}", produces = {MediaType.TEXT_EVENT_STREAM_VALUE})
     public SseEmitter test(@PathVariable("clientId") String clientId) {
         final SseEmitter emitter = sseService.getConn(clientId);
