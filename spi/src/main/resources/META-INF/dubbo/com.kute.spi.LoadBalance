@@ -1,0 +1,3 @@
+hash=com.kute.spi.HashLoadBalance
+random=com.kute.spi.RandomLoadBalance
+wrapper=com.kute.spi.WrapperLoadBalance

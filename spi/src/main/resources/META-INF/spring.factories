@@ -1,0 +1,2 @@
+com.kute.spi.LoadBalance = \
+  com.kute.spi.HashLoadBalance,com.kute.spi.RandomLoadBalance
